@@ -13,19 +13,19 @@ rooted device or the emulator.
 **WARNING** Using it incorrectly may mess up certificate validation on 
 your device, making it impossible to connect to certain (or all) 
 secure sites. Do take a *full* system backup before using and proceed 
-with caution. Do read the associated article to make sure you know 
+with caution. Do read the associated article to make sure you understand 
 what the app does. 
 
 1. Import in Eclipse and build (requires API level 17 build target and a 
 recent ADT version). 
 2. Mount the ```/system``` partition of your test device ```rw``` if necessary:
 
-```shell
+```
   $ su
   # mount -o rw,remount /system
 ```
 
 3. Sign and export the app into this directory.
-4. Run ```run.su`` to install and start on the device. 
+4. Run ```run.su``` to install and start on the device. 
 5. Explore.
 
