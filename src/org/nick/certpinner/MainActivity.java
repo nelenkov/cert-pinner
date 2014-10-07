@@ -135,8 +135,15 @@ public class MainActivity extends Activity implements OnClickListener {
                                     "Connected using %s\n",
                                     conn.getCipherSuite()));
 
-                            X509Certificate[] urlChain = (X509Certificate[]) conn
-                                    .getServerCertificates();
+
+                            Certificate[] certs =
+                                    conn.getServerCertificates();
+
+                            X509Certificate[] urlChain = new X509Certificate[certs.length];
+                            for (int i = 0; i<certs.length;i++){
+                                urlChain[i] = (X509Certificate)certs[i];
+                            }
+
                             publishProgress("Got server certificates: "
                                     + urlChain.length + "\n\n");
 
@@ -147,7 +154,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
                             int certNum = 1;
                             for (int i = 0; i < urlChain.length; i++) {
-                                X509Certificate cert = urlChain[i];
+                                X509Certificate cert = (X509Certificate) urlChain[i];
                                 // XXX far from ideal, but good enough for quick
                                 // testing
                                 // and we don't want to depend on BC
