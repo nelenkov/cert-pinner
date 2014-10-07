@@ -154,7 +154,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
                             int certNum = 1;
                             for (int i = 0; i < urlChain.length; i++) {
-                                X509Certificate cert = (X509Certificate) urlChain[i];
+                                X509Certificate cert = urlChain[i];
                                 // XXX far from ideal, but good enough for quick
                                 // testing
                                 // and we don't want to depend on BC
