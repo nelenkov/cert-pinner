@@ -135,8 +135,15 @@ public class MainActivity extends Activity implements OnClickListener {
                                     "Connected using %s\n",
                                     conn.getCipherSuite()));
 
-                            X509Certificate[] urlChain = (X509Certificate[]) conn
-                                    .getServerCertificates();
+
+                            Certificate[] certs =
+                                    conn.getServerCertificates();
+
+                            X509Certificate[] urlChain = new X509Certificate[certs.length];
+                            for (int i = 0; i<certs.length;i++){
+                                urlChain[i] = (X509Certificate)certs[i];
+                            }
+
                             publishProgress("Got server certificates: "
                                     + urlChain.length + "\n\n");
 
